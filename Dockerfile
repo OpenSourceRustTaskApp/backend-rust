@@ -21,10 +21,10 @@ RUN cargo build --release
 RUN cargo build --release
 
 # 実行用のイメージを作成 (軽量化のため)
-FROM debian:buster-slim
+# FROM debian:buster-slim # コメントアウトまたは削除
 
 # 実行ファイルをコピー
-COPY --from=builder /usr/src/app/target/release/backend /usr/local/bin/backend
+# COPY --from=builder /usr/src/app/target/release/backend /usr/local/bin/backend # コメントアウトまたは削除
 
 # 実行
-CMD ["backend"]
+CMD ["cargo", "watch", "-x", "run"]

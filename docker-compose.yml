@@ -1,7 +1,9 @@
 version: '3'
 services:
   backend:
-    build: .
+    build: .  # Dockerfile からイメージをビルド
     volumes:
       - .:/usr/src/app # ソースコードをボリュームマウント
-    command: cargo watch -x run # cargo-watch でホットリロード
+    working_dir: /usr/src/app/backend # ワークディレクトリを backend に設定
+    ports:
+      - "8000:8000"  # ポートのマッピングを追加
